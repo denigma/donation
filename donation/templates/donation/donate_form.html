@@ -1,0 +1,29 @@
+{% load i18n %}
+{#{% load url from future %}#}
+{% if debug %}
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+{% else %}
+    <form action="https//www.paypal.com/cgi-bin/webscr" method="post" class="donate-form">
+{% endif %}
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="{{ paypal_id }}" />
+    <input type="hidden" name="item_name" value="{{ donation_name }}" />
+    <input type="hidden" name="item_number" value="{{ donation_number }}" />
+    {# <inout type="hidden" name="notify_url" value="http://{{ site.domain }} {% ur; 'ipn_process %} /> #}
+    {% if debug %}
+        <input type="hidden" name="return" value="http://127.0.0.1:8000{% url 'donation-success' %}" />
+    {% else %}
+        <input type="hidden" name="return" value="http://{{ site.domain }}{% url 'donation-success' %}" />
+    {% endif %}
+    <input type="hidden" name="rm" value="2" />
+    <input type="hidden" name="cbt" value="{% trans "Return to donations page" %}" />
+    <input type="hidden" name="no_shipping" value="1" />
+    <input type="hidden" name="currency_code" value="EUR" />
+    &#8364; <input type="text" name="amount" value="" />
+    {#  <div class="donate-info">{% trans "All donations should be calculated in Euros." %}</div>#}
+    <input type="image" name="submit" border="0"
+        src="http://www.paypal.com/en_US/i/btn/btn_donate_LG.gif"
+        alt="{% trans "PayPal - The sager, easier way to pay online" %}">
+
+    <img alt="" border="0" src="https://www.sandbox.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1" />
+</form>

@@ -1,0 +1,6 @@
+*.pyc
+*.save
+db.sqlite3
+env
+.idea/
+

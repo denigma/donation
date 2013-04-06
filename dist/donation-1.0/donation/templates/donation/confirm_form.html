@@ -1,0 +1,8 @@
+    {% if form %}
+        <form action="#" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Confirm" />
+        </form>
+    {% else %}
+               Thank you very much for the donation.
+    {% endif %}

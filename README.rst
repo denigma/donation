@@ -1,0 +1,42 @@
+========
+Donation
+========
+
+Donation is plugable application that enables to collect donation with PayPal.
+
+Quick start
+-----------
+1. Add "donation" to your INSTALLED_APPS setting like this::
+
+    INSTALLED _APPS = (
+        ...
+        'django.contrib.sites',  # Include the site framework if you haven't yet.
+        ...
+        'donation',
+    )
+
+2. Include the donation URLconf in your project urls.py like this::
+
+    url(r'^donate/' include('donation.urls.py)),
+
+3. Make sure the SITE_ID is correctly set in the settings and corresponds to right address in the database.
+
+4. Set the following constants in the settings::
+
+    ``DONATION_NAME`` - a.k.a. product name for PayPal
+    ``DONATOIN_NUMBER`` - something similar, but rather 'subproduct' name
+    ``PAYPAL_ID`` - the PayPal Email address to receive donations
+
+4. Run `python manage.py syncdb` to create the donation models (and eventually the site table).
+
+6. For overwriting the app templates make sure the project template folder is set in the settings::
+
+       TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+   Include in the template that shall harbour the donation button the following line::
+
+       {% include "donation/donate_form.html" %}
+
+   Optional: Overwrite the donation/success.html and include the following line::
+
+       {% include "donation/confirm_form.html" %}

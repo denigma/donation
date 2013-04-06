@@ -1,0 +1,56 @@
+Metadata-Version: 1.1
+Name: donation
+Version: 1.0
+Summary: A simple Django app to collect Web-based donations.
+Home-page: http://denigma.de
+Author: Hevok
+Author-email: hevok@denigma.de
+License: CC
+Description: ========
+        Donation
+        ========
+        
+        Donation is plugable application that enables to collect donation with Paypal.
+        
+        Quick start
+        -----------
+        1. Add "donation" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED _APPS = (
+                ...
+                'django.contrib.sites', # Include site framework if you haven't yet
+                ...
+                'donation',
+            )
+        
+        2. Include the donation URLconf in your project urls.py like this::
+        
+            url(r'^donate/' include('donation.urls.py)),
+        
+        
+        3. Set the following constants in the settings::
+        
+            ``DONATION_NAME`` - a.k.a. product name for PayPal
+            ``DONATOIN_NUMBER`` - something similar, but rather 'subproduct' name
+            ``PAYPAL_ID`` - the PayPal Email address to receive donations
+        
+        4. Run `python manage.py syncdb` to create the donation models (and eventually the site table).
+        
+        5. Include in the template that shall harbour the the donation button the following line:
+        
+           {% include "donation/donate_form.html" %}
+        
+        6. Optional: Overwrite the donation/success.html and include the following line:
+        
+           {% include "donation/confirm_form.html" %}
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Denigma
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: CC License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: PythonProgramming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP : Dynamic Content
