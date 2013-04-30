@@ -1,16 +1,16 @@
 Metadata-Version: 1.1
 Name: donation
-Version: 1.0
+Version: 1.1
 Summary: A simple Django app to collect Web-based donations.
 Home-page: http://denigma.de
 Author: Hevok
 Author-email: hevok@denigma.de
-License: CC
+License: Creative Commons Attribution-Noncommercial-Share Alike license
 Description: ========
         Donation
         ========
         
-        Donation is plugable application that enables to collect donation with Paypal.
+        Donation is plugable application that enables to collect donation with PayPal.
         
         Quick start
         -----------
@@ -18,7 +18,7 @@ Description: ========
         
             INSTALLED _APPS = (
                 ...
-                'django.contrib.sites', # Include site framework if you haven't yet
+                'django.contrib.sites',  # Include the site framework if you haven't yet.
                 ...
                 'donation',
             )
@@ -27,8 +27,9 @@ Description: ========
         
             url(r'^donate/' include('donation.urls.py)),
         
+        3. Make sure the SITE_ID is correctly set in the settings and corresponds to right address in the database.
         
-        3. Set the following constants in the settings::
+        4. Set the following constants in the settings::
         
             ``DONATION_NAME`` - a.k.a. product name for PayPal
             ``DONATOIN_NUMBER`` - something similar, but rather 'subproduct' name
@@ -36,19 +37,23 @@ Description: ========
         
         4. Run `python manage.py syncdb` to create the donation models (and eventually the site table).
         
-        5. Include in the template that shall harbour the the donation button the following line:
+        6. For overwriting the app templates make sure the project template folder is set in the settings::
         
-           {% include "donation/donate_form.html" %}
+               TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
         
-        6. Optional: Overwrite the donation/success.html and include the following line:
+           Include in the template that shall harbour the donation button the following line::
         
-           {% include "donation/confirm_form.html" %}
+               {% include "donation/donate_form.html" %}
+        
+           Optional: Overwrite the donation/success.html and include the following line::
+        
+               {% include "donation/confirm_form.html" %}
         
 Platform: UNKNOWN
 Classifier: Environment :: Web Environment
 Classifier: Framework :: Denigma
 Classifier: Intended Audience :: Developers
-Classifier: License :: OSI Approved :: CC License
+Classifier: License :: OSI Approved :: Creative Commons Attribution-Noncommercial-Share Alike license
 Classifier: Operating System :: OS Independent
 Classifier: Programming Language :: PythonProgramming Language :: Python :: 2.7
 Classifier: Programming Language :: Python :: 3.3

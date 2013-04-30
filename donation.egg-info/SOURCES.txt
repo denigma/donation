@@ -1,6 +1,8 @@
 MANIFEST.in
 README.rst
 setup.py
+docs/issues.rst
+docs/issues.rst~
 donation/__init__.py
 donation/admin.py
 donation/forms.py
