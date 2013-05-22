@@ -36,7 +36,7 @@ def after_donation(request, template='donation/success.html'):
                 'donor': '%s %s' % (request.REQUEST['first_name'],
                                     request.REQUEST['last_name']),
                 'currency': request.REQUEST['mc_currency'][:3],
-                'anonimity': 0,
+                'anonymity': 0,
                 }
         inform = forms.DonationForm(data, initial=data)
         print inform

@@ -8,6 +8,8 @@
     <input type="hidden" name="cmd" value="_donations" />
     <input type="hidden" name="business" value="{{ paypal_id }}" />
     <input type="hidden" name="item_name" value="{{ donation_name }}" />
+    <input type="hidden" name="ls" value="US">
+
     <input type="hidden" name="item_number" value="{{ donation_number }}" />
     <input type="hidden" name="countrycode" value="EN" />
     {# <input type="hidden" name="notify_url" value="http://{{ site.domain }} {% ur; 'ipn_process %} /> #}
